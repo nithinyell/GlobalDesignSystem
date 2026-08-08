@@ -1,8 +1,16 @@
+//
+//  GDSColorTokens.swift
+//  GlobalDesignSystem
+//
+//  Created by Nithin on 2026-08-08.
+//
+
 import SwiftUI
 
 public enum GDSColorPrimitives {
     public static let blue = Color.blue
     public static let darkBlue = Color.indigo
+    public static let red = Color.red
     public static let black = Color.black
     public static let gray = Color.gray
     public static let lightGray = Color(.systemGray4)
@@ -25,6 +33,9 @@ public struct GDSColorTokens: Sendable {
     public let actionPrimary: Color
     public let actionPressed: Color
     public let actionDisabled: Color
+    public let linkPrimary: Color
+    public let linkPressed: Color
+    public let linkDisabled: Color
     public let actionToggleOn: Color
 
     public init(
@@ -40,6 +51,9 @@ public struct GDSColorTokens: Sendable {
         actionPrimary: Color,
         actionPressed: Color,
         actionDisabled: Color,
+        linkPrimary: Color,
+        linkPressed: Color,
+        linkDisabled: Color,
         actionToggleOn: Color
     ) {
         self.backgroundCanvas = backgroundCanvas
@@ -54,6 +68,9 @@ public struct GDSColorTokens: Sendable {
         self.actionPrimary = actionPrimary
         self.actionPressed = actionPressed
         self.actionDisabled = actionDisabled
+        self.linkPrimary = linkPrimary
+        self.linkPressed = linkPressed
+        self.linkDisabled = linkDisabled
         self.actionToggleOn = actionToggleOn
     }
 }

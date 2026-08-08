@@ -1,3 +1,10 @@
+//
+//  GDSSpacingTokens.swift
+//  GlobalDesignSystem
+//
+//  Created by Nithin on 2026-08-08.
+//
+
 import CoreGraphics
 
 public enum GDSSpacingPrimitives {

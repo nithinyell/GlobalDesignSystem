@@ -1,3 +1,10 @@
+//
+//  GDSTheme.swift
+//  GlobalDesignSystem
+//
+//  Created by Nithin on 2026-08-08.
+//
+
 import SwiftUI
 
 public protocol GDSTheme: Sendable {
@@ -25,6 +32,9 @@ public struct GDSDefaultTheme: GDSTheme {
             actionPrimary: GDSColorPrimitives.blue,
             actionPressed: GDSColorPrimitives.darkBlue,
             actionDisabled: GDSColorPrimitives.lightGray,
+            linkPrimary: GDSColorPrimitives.blue,
+            linkPressed: GDSColorPrimitives.darkBlue,
+            linkDisabled: GDSColorPrimitives.gray,
             actionToggleOn: GDSColorPrimitives.green
         ),
         spacing: GDSSpacingTokens = GDSSpacingTokens(
