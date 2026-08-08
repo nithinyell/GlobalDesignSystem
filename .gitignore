@@ -1,0 +1,15 @@
+.DS_Store
+
+# SwiftPM build artifacts and local package state
+.build/
+Packages/
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/
+
+# Xcode user-specific files
+DerivedData/
+*.xcuserstate
+**/xcuserdata/
+
+# Local machine credentials
+.netrc
