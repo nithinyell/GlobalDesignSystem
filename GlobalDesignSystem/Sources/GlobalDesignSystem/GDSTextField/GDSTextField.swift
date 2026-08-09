@@ -18,6 +18,7 @@ public struct GDSTextField: View {
 
     private let type: GDSTextFieldType
     private let validator: GDSTextFieldValidator
+    private let accessibilityIdentifier: String?
 
     /// Creates text field with validation behavior.
     ///
@@ -25,14 +26,17 @@ public struct GDSTextField: View {
     ///   - type: Configuration to use. Supported values are `.email`, `.phone`, and `.password`.
     ///   - text: A binding to the current field value.
     ///   - validator: The validation rules to apply.
+    ///   - accessibilityIdentifier: An optional identifier for UI testing.
     public init(
         type: GDSTextFieldType,
         text: Binding<String>,
-        validator: GDSTextFieldValidator = GDSTextFieldValidator()
+        validator: GDSTextFieldValidator = GDSTextFieldValidator(),
+        accessibilityIdentifier: String? = nil
     ) {
         self.type = type
         self._text = text
         self.validator = validator
+        self.accessibilityIdentifier = accessibilityIdentifier
     }
 
     public var body: some View {
@@ -51,11 +55,19 @@ public struct GDSTextField: View {
                 }
 
                 if type == .password {
-                    Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
-                        .onTapGesture {
+                    Button {
+                        withAnimation(.easeOut(duration: 0.15)) {
                             isPasswordVisible.toggle()
                         }
+                    } label: {
+                        Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                            .frame(minWidth: 44, minHeight: 44)
+                    }
+                    .buttonStyle(.plain)
                     .foregroundStyle(theme.color.linkPrimary)
+                    .accessibilityIdentifier(passwordToggleAccessibilityIdentifier)
+                    .accessibilityLabel(isPasswordVisible ? "Hide password" : "Show password")
+                    .accessibilityHint("Toggles password visibility.")
                 }
             }
             .padding(.horizontal, theme.spacing.md)
@@ -80,12 +92,20 @@ public struct GDSTextField: View {
         if type == .password && !isPasswordVisible {
             SecureField(type.prompt, text: $text)
                 .textContentType(.password)
+                .accessibilityIdentifier(accessibilityIdentifier ?? "")
+                .accessibilityLabel(type.title)
+                .accessibilityValue(accessibilityValue)
+                .accessibilityHint(accessibilityHint)
         } else {
             TextField(type.prompt, text: fieldTextBinding)
                 .textInputAutocapitalization(autocapitalization)
                 .autocorrectionDisabled(true)
                 .keyboardType(keyboardType)
                 .textContentType(textContentType)
+                .accessibilityIdentifier(accessibilityIdentifier ?? "")
+                .accessibilityLabel(type.title)
+                .accessibilityValue(accessibilityValue)
+                .accessibilityHint(accessibilityHint)
         }
     }
 
@@ -165,5 +185,29 @@ public struct GDSTextField: View {
 
     private var errorColor: Color {
         GDSColorPrimitives.red
+    }
+
+    private var passwordToggleAccessibilityIdentifier: String {
+        guard let accessibilityIdentifier else { return "" }
+        return "\(accessibilityIdentifier).visibilityToggle"
+    }
+
+    private var accessibilityValue: String {
+        text.isEmpty ? "Empty" : text
+    }
+
+    private var accessibilityHint: String {
+        if let errorMessage {
+            return errorMessage
+        }
+
+        switch type {
+        case .email:
+            return "Enter an email address."
+        case .phone:
+            return "Enter a 10-digit phone number."
+        case .password:
+            return "Enter a password with at least \(validator.minimumPasswordLength) characters and a number."
+        }
     }
 }

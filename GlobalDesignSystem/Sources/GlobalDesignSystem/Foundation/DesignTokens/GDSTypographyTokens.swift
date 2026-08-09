@@ -18,17 +18,9 @@ public struct GDSTextStyle: Sendable {
 }
 
 public enum GDSTypographyPrimitives {
-    public static let smallText: CGFloat = 14
-    public static let bodyText: CGFloat = 16
-    public static let titleText: CGFloat = 20
-
     public static let regular = Font.Weight.regular
     public static let medium = Font.Weight.medium
     public static let semibold = Font.Weight.semibold
-
-    public static let smallLineHeight: CGFloat = 20
-    public static let bodyLineHeight: CGFloat = 24
-    public static let titleLineHeight: CGFloat = 28
 }
 
 public struct GDSTypographyTokens: Sendable {

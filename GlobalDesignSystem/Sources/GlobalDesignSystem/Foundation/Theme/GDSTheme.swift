@@ -47,20 +47,20 @@ public struct GDSDefaultTheme: GDSTheme {
         ),
         typography: GDSTypographyTokens = GDSTypographyTokens(
             body: GDSTextStyle(
-                font: .system(size: GDSTypographyPrimitives.bodyText, weight: GDSTypographyPrimitives.regular),
-                lineSpacing: GDSTypographyPrimitives.bodyLineHeight - GDSTypographyPrimitives.bodyText
+                font: .system(.body, design: .default, weight: GDSTypographyPrimitives.regular),
+                lineSpacing: 0
             ),
             label: GDSTextStyle(
-                font: .system(size: GDSTypographyPrimitives.smallText, weight: GDSTypographyPrimitives.medium),
-                lineSpacing: GDSTypographyPrimitives.smallLineHeight - GDSTypographyPrimitives.smallText
+                font: .system(.subheadline, design: .default, weight: GDSTypographyPrimitives.medium),
+                lineSpacing: 0
             ),
             action: GDSTextStyle(
-                font: .system(size: GDSTypographyPrimitives.bodyText, weight: GDSTypographyPrimitives.semibold),
-                lineSpacing: GDSTypographyPrimitives.bodyLineHeight - GDSTypographyPrimitives.bodyText
+                font: .system(.headline, design: .default, weight: GDSTypographyPrimitives.semibold),
+                lineSpacing: 0
             ),
             title: GDSTextStyle(
-                font: .system(size: GDSTypographyPrimitives.titleText, weight: GDSTypographyPrimitives.semibold),
-                lineSpacing: GDSTypographyPrimitives.titleLineHeight - GDSTypographyPrimitives.titleText
+                font: .system(.title3, design: .default, weight: GDSTypographyPrimitives.semibold),
+                lineSpacing: 0
             )
         )
     ) {
