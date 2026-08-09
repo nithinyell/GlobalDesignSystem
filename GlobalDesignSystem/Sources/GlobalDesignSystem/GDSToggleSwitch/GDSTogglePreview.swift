@@ -5,20 +5,20 @@
 //  Created by Nithin on 2026-08-08.
 //
 
-#Preview {
-    @State private var enabled = true
-    @State private var notifications = false
+import SwiftUI
 
-    var body: some View {
-        VStack(spacing: GDSDefaultTheme().spacing.md) {
-            GDSToggleSwitch(isOn: $enabled, title: "Enable updates")
+#Preview("Toggles", traits: .sizeThatFitsLayout) {
+    let theme = GDSDefaultTheme()
 
-            GDSToggleSwitch(isOn: .constant(false), title: "Disabled")
-                .disabled(true)
+    VStack(spacing: theme.spacing.md) {
+        GDSToggleSwitch(isOn: .constant(true), title: "Enable updates")
 
-            GDSToggleSwitch(isOn: $notifications, title: "Notifications")
-        }
-        .padding(GDSDefaultTheme().spacing.lg)
-        .background(GDSDefaultTheme().color.backgroundCanvas)
+        GDSToggleSwitch(isOn: .constant(false), title: "Disabled")
+            .disabled(true)
+
+        GDSToggleSwitch(isOn: .constant(false), title: "Notifications")
     }
+    .frame(width: 320, alignment: .leading)
+    .padding(24)
+    .background(theme.color.backgroundCanvas)
 }

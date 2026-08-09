@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-#Preview {
-    @State private var email = "hello@invalid"
-    @State private var phone = "55512"
-    @State private var password = "short"
+#Preview("Text Fields", traits: .sizeThatFitsLayout) {
+    let theme = GDSDefaultTheme()
 
-    var body: some View {
-        VStack(spacing: GDSDefaultTheme().spacing.lg) {
-            GDSTextField(type: .email, text: $email)
-            GDSTextField(type: .phone, text: $phone)
-            GDSTextField(type: .password, text: $password)
-        }
+    VStack(spacing: theme.spacing.lg) {
+        GDSTextField(type: .email, text: .constant("hello@invalid"))
+        GDSTextField(type: .phone, text: .constant("55512"))
+        GDSTextField(type: .password, text: .constant("short"))
     }
+    .frame(width: 320, alignment: .leading)
+    .padding(24)
+    .background(theme.color.backgroundCanvas)
 }

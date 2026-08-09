@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-#Preview {
-    VStack(spacing: GDSDefaultTheme().spacing.md) {
-        GDSButton(title: "Continue", icon: Image(systemName: "arrow.right")) {
+#Preview("Buttons", traits: .sizeThatFitsLayout) {
+    let theme = GDSDefaultTheme()
+
+    VStack(spacing: theme.spacing.md) {
+        GDSButton(title: "Continue", icon: Image(systemName: "chevron.right.2")) {
         }
 
         GDSButton(title: "Disabled", icon: Image(systemName: "lock.fill")) {
@@ -23,6 +25,7 @@ import SwiftUI
         }
         .disabled(true)
     }
-    .padding(GDSDefaultTheme().spacing.lg)
-    .background(GDSDefaultTheme().color.backgroundCanvas)
+    .frame(width: 320, alignment: .center)
+    .padding(24)
+    .background(theme.color.backgroundCanvas)
 }
